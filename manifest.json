@@ -1,4 +1,3 @@
-
 {
   "manifest_version": 3,
   "name": "CRT Overlay",
@@ -6,16 +5,28 @@
   "author": "Maks Melnyk",
   "homepage_url": "https://github.com/MaxMelnik/crt-overlay-extension",
   "description": "Adds a CRT screen effect to websites",
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "action": {
     "default_title": "CRT Overlay",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon970.png",
+      "32": "icons/icon970.png"
+    }
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["overlay.css"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "overlay.css"
+      ],
       "run_at": "document_idle"
     }
   ]

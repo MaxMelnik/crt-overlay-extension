@@ -6,23 +6,102 @@
     width: 100vw !important;
     height: 100vh !important;
 
-    background:
-            linear-gradient(
-                    rgba(18, 16, 16, 0) 50%,
-                    rgba(0, 0, 0, 0.25) 50%
-            ),
-            linear-gradient(
-                    90deg,
-                    rgba(255, 0, 0, 0.06),
-                    rgba(0, 255, 0, 0.02),
-                    rgba(0, 0, 255, 0.06)
-            );
-
-    background-size:
-            100% 2px,
-            3px 100%;
-
     pointer-events: none !important;
     z-index: 2147483647 !important;
-    opacity: 0.6 !important;
+
+    background: /* Horizontal scanlines */ linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.25) 50%
+    ),
+        /* RGB phosphor effect */ linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.12) 0%,
+            rgba(0, 255, 0, 0.05) 50%,
+            rgba(0, 0, 255, 0.12) 100%
+    );
+
+    background-size: 100% 4px,
+    3px 100%;
+
+    background-repeat: repeat !important;
+    opacity: 0.65 !important;
+}
+
+
+/* CRT flicker layer */
+#crt-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+}
+
+/* Subtle, irregular flicker */
+#crt-overlay.crt-flicker::after {
+    animation: crt-flicker 6s linear infinite;
+}
+
+@keyframes crt-flicker {
+    0%, 12%, 23%, 40%, 58%, 76%, 100% {
+        opacity: 0;
+    }
+
+    12.5% {
+        opacity: 0.10;
+    }
+    13.5% {
+        opacity: 0.03;
+    }
+    14% {
+        opacity: 0;
+    }
+
+    23.5% {
+        opacity: 0.07;
+    }
+    24.5% {
+        opacity: 0.02;
+    }
+    25% {
+        opacity: 0;
+    }
+
+    40.5% {
+        opacity: 0.12;
+    }
+    41.5% {
+        opacity: 0.04;
+    }
+    42% {
+        opacity: 0;
+    }
+
+    58.5% {
+        opacity: 0.08;
+    }
+    59.5% {
+        opacity: 0.02;
+    }
+    60% {
+        opacity: 0;
+    }
+
+    76.5% {
+        opacity: 0.10;
+    }
+    77.5% {
+        opacity: 0.03;
+    }
+    78% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #crt-overlay.crt-flicker::after {
+        animation: none;
+    }
 }

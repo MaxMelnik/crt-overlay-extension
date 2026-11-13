@@ -1,0 +1,111 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 280px;
+    margin: 0;
+    padding: 20px;
+
+    background: #17191e;
+    color: #f1f1f1;
+
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+h2 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #8e939e;
+    font-size: 12px;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Toggle switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+
+    background: #484c55;
+    border-radius: 26px;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+
+    background: white;
+    border-radius: 50%;
+
+    transition: transform 0.2s;
+}
+
+input:checked + .slider {
+    background: #70df9d;
+}
+
+input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+input:focus-visible + .slider {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* Flicker section */
+
+.flicker-control {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #353a40;
+}
+
+.switch input:disabled + .slider {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
