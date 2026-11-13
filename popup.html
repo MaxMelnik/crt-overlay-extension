@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRT Overlay</title>
+    <style>
+        body {
+            width: 260px;
+            margin: 0;
+            padding: 20px;
+            background: #17191e;
+            color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            margin-bottom: 22px;
+        }
+
+        h2 {
+            margin: 0 0 6px;
+            font-size: 18px;
+        }
+
+        .subtitle {
+            color: #8e939e;
+            font-size: 12px;
+        }
+
+        .control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #484c55;
+            border-radius: 26px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        input:checked + .slider {
+            background: #70df9d;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        input:focus-visible + .slider {
+            outline: 2px solid white;
+            outline-offset: 3px;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h2>CRT Overlay</h2>
+    <div class="subtitle">Retro display effects</div>
+</div>
+
+<div class="control">
+    <span class="label">CRT Effect</span>
+
+    <label class="switch">
+        <input type="checkbox" id="toggle"
+               aria-label="Enable CRT effect">
+        <span class="slider"></span>
+    </label>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
